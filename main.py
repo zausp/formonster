@@ -15,6 +15,21 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
 from PyPDF2 import PdfReader, PdfWriter
 
+import threading
+from http.server import HTTPServer, BaseHTTPRequestHandler
+
+class Handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"Bot is running!")
+
+def run_server():
+    server = HTTPServer(("0.0.0.0", 10000), Handler)
+    server.serve_forever()
+
+threading.Thread(target=run_server).start()
+
 # Conversation states
 FORM_INPUT = range(1)
 VERSION = "2025.0.1"
