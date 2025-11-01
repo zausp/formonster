@@ -19,7 +19,7 @@ from PyPDF2 import PdfReader, PdfWriter
 FORM_INPUT = range(1)
 VERSION = "2025.0.1"
 
-TOKEN:Final = "8492223382:AAEMgZ41Pds5FgBpnZSkch8ktL1LZPGO3f0"
+TOKEN = os.getenv("TOKEN")
 PAGE_WIDTH, PAGE_HEIGHT = A4
 
 # ------------------ PDF FUNCTIONS ------------------ #
